@@ -1,0 +1,20 @@
+.withdraw-form > .tooltip{
+    top: 100%;
+}
+
+.tooltip {
+    display: none;
+}
+
+.has-error > .tooltip {
+    display: block;
+    opacity: 1;
+}
+
+.has-error > .tooltip > .tooltip-inner{
+    background-color: firebrick;
+}
+
+.has-error > .tooltip > .tooltip-arrow{
+    border-bottom-color: firebrick;
+}
