@@ -10,7 +10,7 @@ export function formTemplate() {
               <div class="tooltip-inner" id="error-message">Error message</div>
             </div>
             <div class="input-group-btn">
-              <button class="btn btn-primary">Search</button>
+              <button class="btn btn-primary">Withdraw</button>
             </div>
           </form>`;
 }
