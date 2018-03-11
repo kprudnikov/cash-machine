@@ -53,10 +53,6 @@ export default class CashMachineApp {
         this.renderError(true, `Value is too big. Max value is ${this.config.maxValue}`);
       } else {
         try {
-          worker.postMessage({
-            action: 'GET_NOTES',
-            payload: [this.inputValue, this.config.availableNotes]
-          })
           const notes = this.config.cashMachine(this.inputValue, this.config.availableNotes);
           const collectedNotes = notes.reduce((acc, curr) => {
             acc[curr] = acc[curr] ? acc[curr] + 1 : 1;

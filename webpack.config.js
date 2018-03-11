@@ -2,15 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractCSS = new ExtractTextPlugin({ filename: 'bundle.css' })
+const extractCSS = new ExtractTextPlugin({ filename: 'bundle.css' });
 
 module.exports = {
   context: __dirname,
-  // entry: './src',
-  entry:{
-    main: './src',
-    worker: './src/script/worker',
-  },
+  entry: './src',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
@@ -24,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: extractCSS.extract({ // Instance 1
+        use: extractCSS.extract({
           fallback: 'style-loader',
           use: [ 'css-loader' ]
         })
