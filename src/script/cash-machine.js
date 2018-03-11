@@ -19,6 +19,12 @@ import {
  * @returns {array}
  */
 export default function cashMachine (amount, notes) {
+  if (!isValidNumber(amount)) {
+    if (amount === null) return [];
+
+    throw new InvalidArgumentException();
+  }
+
   if (amount <= 0 || !Array.isArray(notes) || !notes.length) {
     throw new InvalidArgumentException();
   }

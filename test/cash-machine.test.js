@@ -14,15 +14,15 @@ describe('cash machine:', () => {
       err.name === new InvalidArgumentException().name
     );
 
-    expect(cashMachine.bind(null, null, defaultNotes)).to.throw().and.to.satisfy(err =>
-      err.name === new InvalidArgumentException().name
-    );
-
     expect(cashMachine.bind(null, 100, {})).to.throw().and.to.satisfy(err =>
       err.name === new InvalidArgumentException().name
     );
   });
 
+  it('returns empty set if null is passed', () => {
+    expect(cashMachine(null, defaultNotes)).to.be.instanceof(Array).and.to.have.lengthOf(0);
+  });
+  
   it('throws InvalidArgumentException if empty array of available bills is passed', () => {
     expect(cashMachine.bind(null, 100, [])).to.throw().and.to.satisfy(err =>
       err.name === new InvalidArgumentException().name
