@@ -11,7 +11,17 @@ import {
 
 import '../styles/withdraw-form.css';
 
+/**
+ * Class representing a cash machine instance
+ */
 export default class CashMachineApp {
+  /**
+   * @param {HTMLElement} rootNode - node to render app to
+   * @param {object} userConfig - optional
+   * @param {function} userConfig.cashMachine - function to convert number into bills
+   * @param {array} userConfig.availableNotes
+   * @param {array} userConfig.maxValue - max amount to be withdrawn
+   */
   constructor(rootNode, userConfig = {}) {
     const defaultConfig = {
       cashMachine,
@@ -32,6 +42,9 @@ export default class CashMachineApp {
     this.renderInit();
   }
 
+  /**
+   * Binds event listeners to the DOM
+   */
   addEvents() {
     this.inputField.addEventListener('keyup', () => {
       this.inputValue = parseFloat(this.inputField.value);
@@ -67,11 +80,19 @@ export default class CashMachineApp {
     });
   }
 
+  /**
+   * Renders initial DOM
+   */
   renderInit() {
     this.rootNode.appendChild(this.formNode);
     this.rootNode.appendChild(this.billsWrapper);
   }
 
+  /**
+   * Renders an error message
+   * @param {boolean} showError - whether an error should be shown or hidden
+   * @param {string} errorMessage
+   */
   renderError(showError = false, errorMessage = 'Input should be a valid number') {
     if (showError) {
       this.formNode.classList.add('has-error');
@@ -81,6 +102,10 @@ export default class CashMachineApp {
     }
   }
 
+  /**
+   * Renders bills into DOM
+   * @param {array} notes - [{ billValue: billCount }]
+   */
   renderNotes (notes) {
     this.billsWrapper.innerHTML = Object.keys(notes).map(key =>
       noteTemplate(key, notes[key])
