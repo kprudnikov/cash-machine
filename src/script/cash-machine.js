@@ -9,7 +9,7 @@ import {
 } from './helpers';
 
 export default function cashMachine (amount, notes) {
-  if (amount <= 0 || !notes.length) {
+  if (amount <= 0 || !Array.isArray(notes) || !notes.length) {
     throw new InvalidArgumentException();
   }
 

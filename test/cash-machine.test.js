@@ -17,6 +17,16 @@ describe('cash machine:', () => {
     expect(cashMachine.bind(null, null, defaultNotes)).to.throw().and.to.satisfy(err =>
       err.name === new InvalidArgumentException().name
     );
+
+    expect(cashMachine.bind(null, 100, {})).to.throw().and.to.satisfy(err =>
+      err.name === new InvalidArgumentException().name
+    );
+  });
+
+  it('throws InvalidArgumentException if empty array of available bills is passed', () => {
+    expect(cashMachine.bind(null, 100, [])).to.throw().and.to.satisfy(err =>
+      err.name === new InvalidArgumentException().name
+    );
   });
 
   it('throws NoteUnavailableException if a sum cannot be collected of available notes', () => {
