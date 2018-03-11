@@ -23,3 +23,7 @@ CashMachineApp accepts two parameters:
             availableNotes: [100, 20, 10],
             maxValue: 100500
         });
+
+------------
+
+[Click here for live review](http://careship-test.s3-website.eu-central-1.amazonaws.com/)
